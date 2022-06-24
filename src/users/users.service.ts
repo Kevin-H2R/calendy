@@ -23,6 +23,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
+    return this.usersRepository.findOne({where: {id: id}})
     return `This action returns a #${id} user`;
   }
 
