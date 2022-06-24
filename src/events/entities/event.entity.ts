@@ -11,7 +11,7 @@ export class Event {
     @Column()
     title: string
 
-    @Column()
+    @Column({nullable: true})
     description: string
 
     @Column({type: 'datetime'})
@@ -20,12 +20,12 @@ export class Event {
     @Column({type: 'datetime'})
     end: Date
 
-    @Column()
+    @Column({ default: false })
     allDay: boolean
 
     @ManyToOne(_ => Template, template => template.events, {nullable: true})
     template: Template
 
-    @ManyToOne(_ => User, user => user.events, {nullable: true, cascade: true})
+    @ManyToOne(_ => User, user => user.events)
     user: User
 }
