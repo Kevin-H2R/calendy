@@ -1,6 +1,11 @@
-import { IsBoolean,  IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import { Template } from "src/templates/entities/template.entity";
-import { User } from "src/users/entities/user.entity";
+import {
+  IsBoolean,
+  IsDateString,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateEventDto {
   @IsString()
