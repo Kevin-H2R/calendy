@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { User } from './users/entities/user.entity';
 import { TemplatesModule } from './templates/templates.module';
 import { EventsModule } from './events/events.module';
+import { Template } from './templates/entities/template.entity';
+import { Event } from './events/entities/event.entity';
 
 @Module({
   imports: [UsersModule, TypeOrmModule.forRoot({
@@ -15,7 +17,7 @@ import { EventsModule } from './events/events.module';
     username: 'root',
     password: 'root',
     database: 'calendy',
-    entities: [User],
+    entities: [User, Template, Event],
     synchronize: true,
   }), TemplatesModule, EventsModule,],
   controllers: [AppController],
