@@ -24,6 +24,9 @@ export class SecurityController {
     const user = await this.usersRepository.findOneBy({
       username: body.username,
     });
+    if (!user) {
+      throw new HttpException('USER DOES NOT EXIST', HttpStatus.NOT_FOUND);
+    }
     const match = await bcrypt.compare(body.password, user.password);
     if (!match) {
       throw new HttpException('WRONG PASSWORD', HttpStatus.UNAUTHORIZED);
