@@ -26,6 +26,10 @@ export class EventsService {
     return { message: 'This action adds a new event' };
   }
 
+  retrieveMyEvents(id: number) {
+    return this.eventRepository.findBy({ user: { id: id } });
+  }
+
   findAll() {
     return `This action returns all events`;
   }

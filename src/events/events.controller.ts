@@ -17,8 +17,13 @@ export class EventsController {
 
   @Post()
   create(@Body() createEventDto: CreateEventDto) {
-    console.log(createEventDto);
     return this.eventsService.create(createEventDto);
+  }
+
+  @Post('/my')
+  retireveMyEvents(@Body() body) {
+    console.log(body);
+    return this.eventsService.retrieveMyEvents(Number.parseInt(body['userId']));
   }
 
   @Get()
