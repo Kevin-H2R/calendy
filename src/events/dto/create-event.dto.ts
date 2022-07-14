@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsBoolean,
   IsDateString,
@@ -13,7 +14,6 @@ export class CreateEventDto {
   public title: string;
 
   @IsString()
-  @IsNotEmpty()
   @IsOptional()
   public description: string;
 
@@ -27,9 +27,11 @@ export class CreateEventDto {
 
   @IsBoolean()
   @IsOptional()
+  @Transform(({ value }) => value === 'true')
   public allDay: boolean;
 
   @IsNumber()
+  @Transform(({ value }) => Number.parseInt(value))
   public userId: number;
 
   @IsNumber()

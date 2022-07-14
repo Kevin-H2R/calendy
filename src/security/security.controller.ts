@@ -31,6 +31,10 @@ export class SecurityController {
     if (!match) {
       throw new HttpException('WRONG PASSWORD', HttpStatus.UNAUTHORIZED);
     }
-    return { message: 'login route' };
+    return {
+      statusCode: 200,
+      message: 'login route',
+      data: { id: user.id, username: user.username },
+    };
   }
 }

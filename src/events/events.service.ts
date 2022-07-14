@@ -16,12 +16,14 @@ export class EventsService {
   ) {}
 
   async create(createEventDto: CreateEventDto) {
-    const user = await this.userRepository.findOneBy({id: createEventDto.userId})
+    const user = await this.userRepository.findOneBy({
+      id: createEventDto.userId,
+    });
     if (user === null) {
-      throw new HttpException('USER NOT FOUND', HttpStatus.NOT_FOUND)
+      throw new HttpException('USER NOT FOUND', HttpStatus.NOT_FOUND);
     }
-    this.eventRepository.save({...createEventDto, user: user})
-    return {message: 'This action adds a new event'};
+    this.eventRepository.save({ ...createEventDto, user: user });
+    return { message: 'This action adds a new event' };
   }
 
   findAll() {
